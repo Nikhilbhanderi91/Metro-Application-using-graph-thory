@@ -1,5 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+import random
+import time
 
 # Step 1: Create a graph object
 metro_graph = nx.Graph() 
@@ -36,6 +38,13 @@ edges = [
 
 # Add edges to the graph
 metro_graph.add_edges_from(edges)
+
+# Function to simulate real-time updates
+def update_travel_times(graph):
+    for u, v, data in graph.edges(data=True):
+        # Randomly adjust travel time to simulate real-time updates
+        adjustment = random.randint(-1, 2)  # Simulate minor changes in time
+        data['time'] = max(1, data['time'] + adjustment)  # Ensure time doesn't go below 1
 
 # Step 4: Get user input for start and end stations
 start_station = input("Enter the pickup station: ")
@@ -77,6 +86,22 @@ if shortest_path:
     print(f"Total travel time from {start_station} to {end_station} is: {total_time} minutes")
     print(f"Total distance from {start_station} to {end_station} is: {total_distance_value} km")
 
+    # Simulate real-time updates for a few iterations
+    for _ in range(3):  # Simulate three updates
+        print("\nUpdating travel times...")
+        update_travel_times(metro_graph)
+        
+        # Recalculate the shortest path with updated times
+        shortest_path = shortest_time_path(metro_graph, start_station, end_station)
+        
+        if shortest_path:
+            total_time = total_travel_time(metro_graph, shortest_path)
+            total_distance_value = total_distance(metro_graph, shortest_path)
+            print(f"Updated total travel time from {start_station} to {end_station} is: {total_time} minutes")
+            print(f"Updated total distance from {start_station} to {end_station} is: {total_distance_value} km")
+        
+        time.sleep(1)  # Simulate a delay between updates
+
     # Step 7: Visualize only the shortest path on the graph
     subgraph = metro_graph.subgraph(shortest_path)  # Extract subgraph for the shortest path
 
@@ -92,9 +117,3 @@ if shortest_path:
 
     plt.title(f"Shortest Path from {start_station} to {end_station} (Time in Minutes)")
     plt.show()  
-    
-    
-    
-    
-    
-    
