@@ -108,3 +108,5 @@ if shortest_path:
     subgraph = metro_graph.subgraph(shortest_path)  # Extract subgraph for the shortest path
 
     pos = nx.spring_layout(metro_graph)  # Positions for all
+
+#enter your pickup and drop station end show output
