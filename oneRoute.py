@@ -109,4 +109,3 @@ if shortest_path:
 
     pos = nx.spring_layout(metro_graph)  # Positions for all
 
-#enter your pickup and drop station end show output
