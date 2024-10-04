@@ -1,8 +1,10 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 
+
 # Step 1: Create a graph object
 metro_graph = nx.Graph() 
+
 
 # Step 2: Add metro stations as nodes for both routes
 red_line_stations = [
@@ -12,14 +14,17 @@ red_line_stations = [
     "Rabari Colony", "Vastral", "Nirant Cross Road", "Vastral Gam"
 ]
 
+
 blue_line_stations = [
     "APMC", "Jivraj Park", "Rajiv Nagar", "Shreyas", "Paldi", 
     "Gandhi Gram", "Old High Court (interchange station)", "Usmanpura", 
     "Vadaj", "Sabarmati Railway Station", "Sabarmati", "Motera"
 ]
 
+
 # Add both routes to the graph
 metro_graph.add_nodes_from(red_line_stations + blue_line_stations)
+
 
 # Step 3: Define edges (station-to-station connections with distance and time)
 edges = [
@@ -56,6 +61,7 @@ edges = [
     ("Sabarmati", "Motera", {'distance': 1.6, 'time': 3}),
 ]
 
+
 # Add edges to the graph
 metro_graph.add_edges_from(edges)
 
@@ -74,12 +80,14 @@ def total_travel_time(graph, path):
         total_time += graph[path[i]][path[i + 1]]['time']
     return total_time
 
+
 # Function to calculate total distance of the shortest path
 def total_distance(graph, path):
     total_distance = 0
     for i in range(len(path) - 1):
         total_distance += graph[path[i]][path[i + 1]]['distance']
     return total_distance
+
 
 # Main loop
 while True:
@@ -91,6 +99,7 @@ while True:
     
     if route_choice.lower() == 'exit':
         break
+
     
     # Set stations based on route choice
     if route_choice == '1':
@@ -101,51 +110,64 @@ while True:
         print("Invalid choice. Please try again.")
         continue
 
+    
     # Get user input for start and end stations
     print("Available stations:", stations)
     start_station = input("Enter the pickup station: ")
     end_station = input("Enter the drop station: ")
+
 
     # Input validation: check if stations exist in the selected route
     if start_station not in stations or end_station not in stations:
         print("Error: One or both of the stations are not in the selected route. Please try again.")
         continue
 
+    
     # Calculate the shortest path
     shortest_path = shortest_time_path(metro_graph, start_station, end_station)
 
+    
     if shortest_path:
         print(f"The shortest path from {start_station} to {end_station} is: {shortest_path}")
 
+        
         # Get total time and distance for the calculated shortest path
         total_time = total_travel_time(metro_graph, shortest_path)
         total_distance_value = total_distance(metro_graph, shortest_path)
 
+        
         print(f"Total travel time from {start_station} to {end_station} is: {total_time} minutes")
         print(f"Total distance from {start_station} to {end_station} is: {total_distance_value} km")
 
+        
         # Step 5: Visualize only the shortest path on the graph
         subgraph = metro_graph.subgraph(shortest_path)  # Extract subgraph for the shortest path
 
         pos = nx.spring_layout(metro_graph, seed=42)  # Positions for all nodes (fixed seed for consistent layout)
 
+        
         # Clear previous plot
         plt.clf()
 
+        
         # Draw all nodes but highlight only those in the shortest path
         nx.draw(metro_graph, pos, with_labels=True, node_color='lightgrey', node_size=2000, font_size=10)
         nx.draw(subgraph, pos, with_labels=True, node_color='lightblue', node_size=2500, font_size=10, font_weight='bold')
 
+        
         # Highlight edges in the shortest path
         edge_labels_time = nx.get_edge_attributes(subgraph, 'time')
         nx.draw_networkx_edge_labels(subgraph, pos, edge_labels=edge_labels_time)
 
+        
         # Display both time and distance on edges in the subgraph
         edge_labels = {(u, v): f"{d['time']} min, {d['distance']} km" for u, v, d in subgraph.edges(data=True)}
         nx.draw_networkx_edge_labels(subgraph, pos, edge_labels=edge_labels)
 
+        
         plt.title(f"Shortest Path from {start_station} to {end_station} (Time in Minutes)")
         plt.pause(1)  # Pause for 1 second to update the plot
+
 
 # Close the plot when exiting the loop
 plt.close()
