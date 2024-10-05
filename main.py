@@ -1,4 +1,4 @@
-import networkx as nx
+iimport networkx as nx
 import matplotlib.pyplot as plt
 
 
@@ -130,3 +130,5 @@ while True:
 
 # Close the plot when exiting the loop
 plt.close()
+
+#user can get your destination place 
