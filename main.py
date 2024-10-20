@@ -2,8 +2,10 @@ iimport networkx as nx
 import matplotlib.pyplot as plt
 
 
+
 # Step 1: Create a graph object
 metro_graph = nx.Graph() 
+
 
 
 # Step 2: Add metro stations as nodes
@@ -14,6 +16,8 @@ stations = [
     "Rabari Colony", "Vastral", "Nirant Cross Road", "Vastral Gam"
 ]
 metro_graph.add_nodes_from(stations)
+
+
 
 
 # Step 3: Define edges (station-to-station connections with distance and time)
@@ -38,8 +42,12 @@ edges = [
 ]
 
 
+
+
 # Add edges to the graph
 metro_graph.add_edges_from(edges)
+
+
 
 
 # Function to calculate the shortest path based on 'time'
@@ -68,6 +76,7 @@ def total_distance(graph, path):
 
 
 # Real-time updates using a loop
+
 while True:
     # Step 4: Get user input for start and end stations
     start_station = input("Enter the pickup station (or 'exit' to quit): ")
