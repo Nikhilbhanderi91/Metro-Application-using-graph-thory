@@ -1,12 +1,8 @@
 iimport networkx as nx
 import matplotlib.pyplot as plt
 
-
-
 # Step 1: Create a graph object
 metro_graph = nx.Graph() 
-
-
 
 # Step 2: Add metro stations as nodes
 stations = [
@@ -16,9 +12,6 @@ stations = [
     "Rabari Colony", "Vastral", "Nirant Cross Road", "Vastral Gam"
 ]
 metro_graph.add_nodes_from(stations)
-
-
-
 
 # Step 3: Define edges (station-to-station connections with distance and time)
 edges = [
@@ -41,14 +34,8 @@ edges = [
     ("Nirant Cross Road", "Vastral Gam", {'distance': 1.2, 'time': 2}),
 ]
 
-
-
-
 # Add edges to the graph
 metro_graph.add_edges_from(edges)
-
-
-
 
 # Function to calculate the shortest path based on 'time'
 def shortest_time_path(graph, start_station, end_station):
@@ -57,15 +44,13 @@ def shortest_time_path(graph, start_station, end_station):
     except nx.NetworkXNoPath:
         print(f"No path found between {start_station} and {end_station}.")
         return []
-
-
+        
 # Function to get total travel time of the shortest path
 def total_travel_time(graph, path):
     total_time = 0
     for i in range(len(path) - 1):
         total_time += graph[path[i]][path[i + 1]]['time']
     return total_time
-
 
 # Function to calculate total distance of the shortest path
 def total_distance(graph, path):
@@ -76,7 +61,6 @@ def total_distance(graph, path):
 
 
 # Real-time updates using a loop
-
 while True:
     # Step 4: Get user input for start and end stations
     start_station = input("Enter the pickup station (or 'exit' to quit): ")
@@ -84,17 +68,15 @@ while True:
         break
     end_station = input("Enter the drop station: ")
 
-    
     # Input validation: check if stations exist in the graph
     if start_station not in metro_graph or end_station not in metro_graph:
         print("Error: One or both of the stations are not in the network. Please try again.")
         continue
-
-    
+        
     # Calculate the shortest path
     shortest_path = shortest_time_path(metro_graph, start_station, end_station)
 
-    
+
     if shortest_path:
         print(f"The shortest path from {start_station} to {end_station} is: {shortest_path}")
 
