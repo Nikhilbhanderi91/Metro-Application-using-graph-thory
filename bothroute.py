@@ -4,10 +4,8 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import tkinter as tk
 from tkinter import ttk, messagebox
 
-
 # Step 1: Create a graph object
 metro_graph = nx.Graph()
-
 
 # Define metro stations for both routes
 red_line_stations = [
@@ -22,10 +20,8 @@ blue_line_stations = [
     "Vadaj", "Sabarmati Railway Station", "Sabarmati", "Motera"
 ]
 
-
 # Add both routes to the graph
 metro_graph.add_nodes_from(red_line_stations + blue_line_stations)
-
 
 # Step 3: Define edges (station-to-station connections with distance and time)
 edges = [
@@ -47,9 +43,6 @@ edges = [
     ("Rabari Colony", "Vastral", {'distance': 2.5, 'time': 3}),
     ("Vastral", "Nirant Cross Road", {'distance': 7.5, 'time': 2}),
     ("Nirant Cross Road", "Vastral Gam", {'distance': 1.2, 'time': 2}),
-
-
-
     
     # Blue Line edges
     ("APMC", "Jivraj Park", {'distance': 1.5, 'time': 3}),
@@ -70,6 +63,7 @@ metro_graph.add_edges_from(edges)
 
 # Function to calculate the shortest path based on 'time'
 def shortest_time_path(graph, start_station, end_station):
+
     try:
         return nx.dijkstra_path(graph, source=start_station, target=end_station, weight='time')
     except nx.NetworkXNoPath:
