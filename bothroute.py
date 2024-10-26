@@ -8,6 +8,7 @@ from tkinter import ttk, messagebox
 # Step 1: Create a graph object
 metro_graph = nx.Graph()
 
+
 # Define metro stations for both routes
 red_line_stations = [
     "Thaltej Gam", "Thaltej", "Doordarshan Kendra", "Gurukul Road", "Gujarat University",
@@ -21,8 +22,10 @@ blue_line_stations = [
     "Vadaj", "Sabarmati Railway Station", "Sabarmati", "Motera"
 ]
 
+
 # Add both routes to the graph
 metro_graph.add_nodes_from(red_line_stations + blue_line_stations)
+
 
 # Step 3: Define edges (station-to-station connections with distance and time)
 edges = [
@@ -45,6 +48,9 @@ edges = [
     ("Vastral", "Nirant Cross Road", {'distance': 7.5, 'time': 2}),
     ("Nirant Cross Road", "Vastral Gam", {'distance': 1.2, 'time': 2}),
 
+
+
+    
     # Blue Line edges
     ("APMC", "Jivraj Park", {'distance': 1.5, 'time': 3}),
     ("Jivraj Park", "Rajiv Nagar", {'distance': 1.2, 'time': 2}),
