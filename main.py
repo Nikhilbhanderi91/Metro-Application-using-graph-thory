@@ -38,10 +38,6 @@ edges = [
 # Add edges to the graph
 metro_graph.add_edges_from(edges)
 
-
-
-
-
 # Function to calculate the shortest path based on 'time'
 def shortest_time_path(graph, start_station, end_station):
     try:
@@ -49,20 +45,13 @@ def shortest_time_path(graph, start_station, end_station):
     except nx.NetworkXNoPath:
         print(f"No path found between {start_station} and {end_station}.")
         return []
-
-
-
-        
+       
 # Function to get total travel time of the shortest path
 def total_travel_time(graph, path):
     total_time = 0
     for i in range(len(path) - 1):
         total_time += graph[path[i]][path[i + 1]]['time']
     return total_time
-
-
-
-
 
 # Function to calculate total distance of the shortest path
 def total_distance(graph, path):
