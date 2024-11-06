@@ -35,6 +35,18 @@ edges = [
 ]
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 # Add edges to the graph
 metro_graph.add_edges_from(edges)
 
