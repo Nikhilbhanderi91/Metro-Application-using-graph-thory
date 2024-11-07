@@ -34,19 +34,6 @@ edges = [
     ("Nirant Cross Road", "Vastral Gam", {'distance': 1.2, 'time': 2}),
 ]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Add edges to the graph
 metro_graph.add_edges_from(edges)
 
@@ -71,7 +58,6 @@ def total_distance(graph, path):
     for i in range(len(path) - 1):
         total_distance += graph[path[i]][path[i + 1]]['distance']
     return total_distance
-
 
 # Real-time updates using a loop
 while True:
