@@ -3,12 +3,8 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import tkinter as tk
 from tkinter import ttk, messagebox
-
-
 # Step 1: Create a graph object
 metro_graph = nx.Graph()
-
-
 # Define metro stations for both routes
 red_line_stations = [
     "Thaltej Gam", "Thaltej", "Doordarshan Kendra", "Gurukul Road", "Gujarat University",
@@ -21,11 +17,8 @@ blue_line_stations = [
     "Gandhi Gram", "Old High Court (interchange station)", "Usmanpura",
     "Vadaj", "Sabarmati Railway Station", "Sabarmati", "Motera"
 ]
-
-
 # Add both routes to the graph
 metro_graph.add_nodes_from(red_line_stations + blue_line_stations)
-
 # Step 3: Define edges (station-to-station connections with distance and time)
 edges = [
     # Red Line edges
@@ -131,12 +124,10 @@ def visualize_path(path, total_time, total_distance):
     plt.title(f"Shortest Path from {path[0]} to {path[-1]} (Time: {total_time} min, Distance: {total_distance} km)")
     plt.tight_layout()  # Adjust layout
     canvas.draw()  # Render the plot in the Tkinter window
-
 # Tkinter window setup
 root = tk.Tk()
 root.title("Ahmedabad Metro Route Finder")
 root.geometry("800x600")
-
 # Frame for input selection
 input_frame = ttk.Frame(root)
 input_frame.pack(pady=20)
