@@ -1,11 +1,7 @@
 iimport networkx as nx
 import matplotlib.pyplot as plt
-
-
 # Step 1: Create a graph object
 metro_graph = nx.Graph() 
-
-
 # Step 2: Add metro stations as nodes
 stations = [
     "Thaltej Gam", "Thaltej", "Doordarshan Kendra", "Gurukul Road", "Gujarat University", 
@@ -14,9 +10,6 @@ stations = [
     "Rabari Colony", "Vastral", "Nirant Cross Road", "Vastral Gam"
 ]
 metro_graph.add_nodes_from(stations)
-
-
-
 # Step 3: Define edges (station-to-station connections with distance and time)
 edges = [
     ("Thaltej Gam", "Thaltej", {'distance': 1.2, 'time': 2}),
@@ -47,8 +40,7 @@ def shortest_time_path(graph, start_station, end_station):
         return nx.dijkstra_path(graph, source=start_station, target=end_station, weight='time')
     except nx.NetworkXNoPath:
         print(f"No path found between {start_station} and {end_station}.")
-        return []
-       
+        return [] 
 # Function to get total travel time of the shortest path
 def total_travel_time(graph, path):
     total_time = 0
