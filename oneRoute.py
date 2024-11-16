@@ -1,8 +1,10 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 
+
 # Step 1: Create a graph object
 metro_graph = nx.Graph() 
+
 
 # Step 2: Add metro stations as nodes for both routes
 red_line_stations = [
@@ -17,8 +19,10 @@ blue_line_stations = [
     "Vadaj", "Sabarmati Railway Station", "Sabarmati", "Motera"
 ]
 
+
 # Add both routes to the graph
 metro_graph.add_nodes_from(red_line_stations + blue_line_stations)
+
 
 # Step 3: Define edges (station-to-station connections with distance and time)
 edges = [
@@ -41,6 +45,7 @@ edges = [
     ("Vastral", "Nirant Cross Road", {'distance': 7.5, 'time': 2}),
     ("Nirant Cross Road", "Vastral Gam", {'distance': 1.2, 'time': 2}),
 
+    
     # Blue Line edges
     ("APMC", "Jivraj Park", {'distance': 1.5, 'time': 3}),
     ("Jivraj Park", "Rajiv Nagar", {'distance': 1.2, 'time': 2}),
@@ -54,6 +59,7 @@ edges = [
     ("Sabarmati Railway Station", "Sabarmati", {'distance': 1.8, 'time': 3}),
     ("Sabarmati", "Motera", {'distance': 1.6, 'time': 3}),
 ]
+
 
 
 # Add edges to the graph
@@ -73,15 +79,13 @@ def total_travel_time(graph, path):
     for i in range(len(path) - 1):
         total_time += graph[path[i]][path[i + 1]]['time']
     return total_time
-
-
+    
 # Function to calculate total distance of the shortest path
 def total_distance(graph, path):
     total_distance = 0
     for i in range(len(path) - 1):
         total_distance += graph[path[i]][path[i + 1]]['distance']
     return total_distance
-
 
 # Main loop
 while True:
@@ -90,11 +94,9 @@ while True:
     print("1. Red Line")
     print("2. Blue Line")
     route_choice = input("Enter the route number (or 'exit' to quit): ")
-    
     if route_choice.lower() == 'exit':
         break
 
-    
     # Set stations based on route choice
     if route_choice == '1':
         stations = red_line_stations
@@ -104,7 +106,6 @@ while True:
         print("Invalid choice. Please try again.")
         continue
 
-    
     # Get user input for start and end stations
     print("Available stations:", stations)
     start_station = input("Enter the pickup station: ")
