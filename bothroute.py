@@ -3,8 +3,10 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import tkinter as tk
 from tkinter import ttk, messagebox
+
 # Step 1: Create a graph object
 metro_graph = nx.Graph()
+
 # Define metro stations for both routes
 red_line_stations = [
     "Thaltej Gam", "Thaltej", "Doordarshan Kendra", "Gurukul Road", "Gujarat University",
@@ -20,7 +22,6 @@ blue_line_stations = [
 
 # Add both routes to the graph
 metro_graph.add_nodes_from(red_line_stations + blue_line_stations)
-
 
 # Step 3: Define edges (station-to-station connections with distance and time)
 edges = [
@@ -130,50 +131,36 @@ def visualize_path(path, total_time, total_distance):
     plt.tight_layout()  # Adjust layout
     canvas.draw()  # Render the plot in the Tkinter window
 
-
 # Tkinter window setup
 root = tk.Tk()
 root.title("Ahmedabad Metro Route Finder")
 root.geometry("800x600")
 
-
 # Frame for input selection
 input_frame = ttk.Frame(root)
 input_frame.pack(pady=20)
 
-
-
 # Variables for stations
 start_station_var = tk.StringVar()
 end_station_var = tk.StringVar()
-
-
 
 # Start station dropdown
 ttk.Label(input_frame, text="Select Start Station:").grid(row=0, column=0, padx=10, pady=10)
 start_station_menu = ttk.Combobox(input_frame, textvariable=start_station_var, values=red_line_stations + blue_line_stations)
 start_station_menu.grid(row=0, column=1, padx=10, pady=10)
 
-
-
 # End station dropdown
 ttk.Label(input_frame, text="Select End Station:").grid(row=1, column=0, padx=10, pady=10)
 end_station_menu = ttk.Combobox(input_frame, textvariable=end_station_var, values=red_line_stations + blue_line_stations)
 end_station_menu.grid(row=1, column=1, padx=10, pady=10)
 
-
-
 # Button to calculate the route
 calculate_button = ttk.Button(input_frame, text="Calculate Route", command=calculate_route)
 calculate_button.grid(row=2, columnspan=2, pady=20)
 
-
-
 # Label for displaying results
 result_label = ttk.Label(root, text="", wraplength=400, justify="left")
 result_label.pack(pady=20)
-
-
 
 # Matplotlib figure and canvas
 fig, ax = plt.subplots(figsize=(8, 4))
