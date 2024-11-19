@@ -1,8 +1,10 @@
 iimport networkx as nx
 import matplotlib.pyplot as plt
 
+
 # Step 1: Create a graph object
 metro_graph = nx.Graph() 
+
 
 # Step 2: Add metro stations as nodes
 stations = [
@@ -34,8 +36,10 @@ edges = [
     ("Nirant Cross Road", "Vastral Gam", {'distance': 1.2, 'time': 2}),
 ]
 
+
 # Add edges to the graph
 metro_graph.add_edges_from(edges)
+
 
 
 # Function to calculate the shortest path based on 'time'
