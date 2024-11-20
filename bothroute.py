@@ -4,10 +4,8 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import tkinter as tk
 from tkinter import ttk, messagebox
 
-
 # Step 1: Create a graph object
 metro_graph = nx.Graph()
-
 
 # Define metro stations for both routes
 red_line_stations = [
@@ -25,6 +23,7 @@ blue_line_stations = [
 
 # Add both routes to the graph
 metro_graph.add_nodes_from(red_line_stations + blue_line_stations)
+
 
 # Step 3: Define edges (station-to-station connections with distance and time)
 edges = [
