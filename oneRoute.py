@@ -1,8 +1,10 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 
+
 # Step 1: Create a graph object
 metro_graph = nx.Graph() 
+
 
 # Step 2: Add metro stations as nodes for both routes
 red_line_stations = [
@@ -17,10 +19,8 @@ blue_line_stations = [
     "Vadaj", "Sabarmati Railway Station", "Sabarmati", "Motera"
 ]
 
-
 # Add both routes to the graph
 metro_graph.add_nodes_from(red_line_stations + blue_line_stations)
-
 
 # Step 3: Define edges (station-to-station connections with distance and time)
 edges = [
@@ -42,8 +42,6 @@ edges = [
     ("Rabari Colony", "Vastral", {'distance': 2.5, 'time': 3}),
     ("Vastral", "Nirant Cross Road", {'distance': 7.5, 'time': 2}),
     ("Nirant Cross Road", "Vastral Gam", {'distance': 1.2, 'time': 2}),
-
-
     
     # Blue Line edges
     ("APMC", "Jivraj Park", {'distance': 1.5, 'time': 3}),
@@ -59,8 +57,10 @@ edges = [
     ("Sabarmati", "Motera", {'distance': 1.6, 'time': 3}),
 ]
 
+
 # Add edges to the graph
 metro_graph.add_edges_from(edges)
+
 
 # Function to calculate the shortest path based on 'time'
 def shortest_time_path(graph, start_station, end_station):
@@ -70,19 +70,22 @@ def shortest_time_path(graph, start_station, end_station):
         print(f"No path found between {start_station} and {end_station}.")
         return []
 
+
 # Function to get total travel time of the shortest path
 def total_travel_time(graph, path):
     total_time = 0
     for i in range(len(path) - 1):
         total_time += graph[path[i]][path[i + 1]]['time']
     return total_time
-    
+
+
 # Function to calculate total distance of the shortest path
 def total_distance(graph, path):
     total_distance = 0
     for i in range(len(path) - 1):
         total_distance += graph[path[i]][path[i + 1]]['distance']
     return total_distance
+
 
 # Main loop
 while True:
