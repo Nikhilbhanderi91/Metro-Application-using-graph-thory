@@ -1,10 +1,8 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 
-
 # Step 1: Create a graph object
 metro_graph = nx.Graph() 
-
 # Step 2: Add metro stations as nodes for both routes
 red_line_stations = [
     "Thaltej Gam", "Thaltej", "Doordarshan Kendra", "Gurukul Road", "Gujarat University", 
@@ -19,10 +17,8 @@ blue_line_stations = [
 ]
 
 
-
 # Add both routes to the graph
 metro_graph.add_nodes_from(red_line_stations + blue_line_stations)
-
 # Step 3: Define edges (station-to-station connections with distance and time)
 edges = [
     # Red Line edges
@@ -63,8 +59,6 @@ edges = [
 # Add edges to the graph
 metro_graph.add_edges_from(edges)
 
-
-
 # Function to calculate the shortest path based on 'time'
 def shortest_time_path(graph, start_station, end_station):
     try:
@@ -72,8 +66,6 @@ def shortest_time_path(graph, start_station, end_station):
     except nx.NetworkXNoPath:
         print(f"No path found between {start_station} and {end_station}.")
         return []
-
-
 
 # Function to get total travel time of the shortest path
 def total_travel_time(graph, path):
@@ -111,7 +103,6 @@ while True:
         print("Invalid choice. Please try again.")
         continue
 
-    
     # Get user input for start and end stations
     print("Available stations:", stations)
     start_station = input("Enter the pickup station: ")
@@ -121,7 +112,6 @@ while True:
     if start_station not in stations or end_station not in stations:
         print("Error: One or both of the stations are not in the selected route. Please try again.")
         continue
-
     # Calculate the shortest path
     shortest_path = shortest_time_path(metro_graph, start_station, end_station)
     if shortest_path:
