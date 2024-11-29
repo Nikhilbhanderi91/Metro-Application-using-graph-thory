@@ -1,6 +1,7 @@
 iimport networkx as nx
 import matplotlib.pyplot as plt
 
+
 # Step 1: Create a graph object
 metro_graph = nx.Graph() 
 
@@ -45,6 +46,7 @@ def shortest_time_path(graph, start_station, end_station):
     except nx.NetworkXNoPath:
         print(f"No path found between {start_station} and {end_station}.")
         return [] 
+
 
 # Function to get total travel time of the shortest path
 def total_travel_time(graph, path):
