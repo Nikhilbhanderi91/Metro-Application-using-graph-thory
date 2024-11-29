@@ -4,8 +4,10 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import tkinter as tk
 from tkinter import ttk, messagebox
 
+
 # Step 1: Create a graph object
 metro_graph = nx.Graph()
+
 
 # Define metro stations for both routes
 red_line_stations = [
@@ -23,6 +25,8 @@ blue_line_stations = [
 
 # Add both routes to the graph
 metro_graph.add_nodes_from(red_line_stations + blue_line_stations)
+
+
 # Step 3: Define edges (station-to-station connections with distance and time)
 edges = [
     # Red Line edges
@@ -63,6 +67,7 @@ edges = [
 metro_graph.add_edges_from(edges)
 
 
+
 # Function to calculate the shortest path based on 'time'
 def shortest_time_path(graph, start_station, end_station):
 
@@ -71,6 +76,8 @@ def shortest_time_path(graph, start_station, end_station):
     except nx.NetworkXNoPath:
         messagebox.showinfo("No Path", f"No path found between {start_station} and {end_station}.")
         return []
+
+
 # Function to get total travel time of the shortest path
 def total_travel_time(graph, path):
     total_time = 0
@@ -83,6 +90,7 @@ def total_distance(graph, path):
     for i in range(len(path) - 1):
         total_distance += graph[path[i]][path[i + 1]]['distance']
     return total_distance
+
 
 # Function to calculate and visualize the route
 def calculate_route():
@@ -108,20 +116,24 @@ def calculate_route():
         messagebox.showinfo("No Path", "No path found between the selected stations.")
 
 
+
 # Function to visualize the path using matplotlib
 def visualize_path(path, total_time, total_distance):
     plt.clf()  # Clear previous plot
     pos = nx.spring_layout(metro_graph, seed=42)  # Fixed positions for consistency
 
     
+    
     # Draw all nodes
     nx.draw(metro_graph, pos, with_labels=True, node_color='lightgrey', node_size=2000, font_size=10)
 
     
+
     
     # Highlight the shortest path
     subgraph = metro_graph.subgraph(path)
     nx.draw(subgraph, pos, with_labels=True, node_color='lightblue', node_size=2500, font_weight='bold')
+
 
     
     # Display edge labels
@@ -129,36 +141,46 @@ def visualize_path(path, total_time, total_distance):
     nx.draw_networkx_edge_labels(subgraph, pos, edge_labels=edge_labels)
 
     
+    
     plt.title(f"Shortest Path from {path[0]} to {path[-1]} (Time: {total_time} min, Distance: {total_distance} km)")
-    plt.tight_layout()  # Adjust layout
-    canvas.draw()  # Render the plot in the Tkinter window
+    plt.tight_layout() 
+    # Adjust layout
+    canvas.draw()  
+    
+# Render the plot in the Tkinter window
 
 # Tkinter window setup
 root = tk.Tk()
 root.title("Ahmedabad Metro Route Finder")
 root.geometry("800x600")
 
+
 # Frame for input selection
 input_frame = ttk.Frame(root)
 input_frame.pack(pady=20)
 
+
 # Variables for stations
 start_station_var = tk.StringVar()
 end_station_var = tk.StringVar()
+
 
 # Start station dropdown
 ttk.Label(input_frame, text="Select Start Station:").grid(row=0, column=0, padx=10, pady=10)
 start_station_menu = ttk.Combobox(input_frame, textvariable=start_station_var, values=red_line_stations + blue_line_stations)
 start_station_menu.grid(row=0, column=1, padx=10, pady=10)
 
+
 # End station dropdown
 ttk.Label(input_frame, text="Select End Station:").grid(row=1, column=0, padx=10, pady=10)
 end_station_menu = ttk.Combobox(input_frame, textvariable=end_station_var, values=red_line_stations + blue_line_stations)
 end_station_menu.grid(row=1, column=1, padx=10, pady=10)
 
+
 # Button to calculate the route
 calculate_button = ttk.Button(input_frame, text="Calculate Route", command=calculate_route)
 calculate_button.grid(row=2, columnspan=2, pady=20)
+
 
 # Label for displaying results
 result_label = ttk.Label(root, text="", wraplength=400, justify="left")
