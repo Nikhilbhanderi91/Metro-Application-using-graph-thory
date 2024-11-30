@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 metro_graph = nx.Graph() 
 
 
+
 # Step 2: Add metro stations as nodes for both routes
 red_line_stations = [
     "Thaltej Gam", "Thaltej", "Doordarshan Kendra", "Gurukul Road", "Gujarat University", 
@@ -12,6 +13,7 @@ red_line_stations = [
     "Gheekanta", "Kalupur Railway Station", "Kankaria East", "Apparel Park", "Amraiwadi",  
     "Rabari Colony", "Vastral", "Nirant Cross Road", "Vastral Gam"
 ]
+
 blue_line_stations = [
     "APMC", "Jivraj Park", "Rajiv Nagar", "Shreyas", "Paldi", 
     "Gandhi Gram", "Old High Court (interchange station)", "Usmanpura", 
