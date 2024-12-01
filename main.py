@@ -1,11 +1,8 @@
 iimport networkx as nx
 import matplotlib.pyplot as plt
 
-
-
 # Step 1: Create a graph object
 metro_graph = nx.Graph() 
-
 
 # Step 2: Add metro stations as nodes
 stations = [
@@ -15,8 +12,6 @@ stations = [
     "Rabari Colony", "Vastral", "Nirant Cross Road", "Vastral Gam"
 ]
 metro_graph.add_nodes_from(stations)
-
-
 
 # Step 3: Define edges (station-to-station connections with distance and time)
 edges = [
@@ -87,17 +82,13 @@ while True:
         total_distance_value = total_distance(metro_graph, shortest_path)
         print(f"Total travel time from {start_station} to {end_station} is: {total_time} minutes")
         print(f"Total distance from {start_station} to {end_station} is: {total_distance_value} km")
-
-
         
         # Step 5: Visualize only the shortest path on the graph
         subgraph = metro_graph.subgraph(shortest_path)  # Extract subgraph for the shortest path
         pos = nx.spring_layout(metro_graph, seed=42)  # Positions for all nodes (fixed seed for consistent layout)
 
-        
         # Clear previous plot
-        plt.clf()
-        
+        plt.clf()       
         # Draw all nodes but highlight only those in the shortest path
         nx.draw(metro_graph, pos, with_labels=True, node_color='lightgrey', node_size=2000, font_size=10)
         nx.draw(subgraph, pos, with_labels=True, node_color='lightblue', node_size=2500, font_size=10, font_weight='bold')
