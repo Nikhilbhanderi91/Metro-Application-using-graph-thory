@@ -1,9 +1,7 @@
 iimport networkx as nx
 import matplotlib.pyplot as plt
-
 # Step 1: Create a graph object
 metro_graph = nx.Graph() 
-
 # Step 2: Add metro stations as nodes
 stations = [
     "Thaltej Gam", "Thaltej", "Doordarshan Kendra", "Gurukul Road", "Gujarat University", 
@@ -12,7 +10,6 @@ stations = [
     "Rabari Colony", "Vastral", "Nirant Cross Road", "Vastral Gam"
 ]
 metro_graph.add_nodes_from(stations)
-
 # Step 3: Define edges (station-to-station connections with distance and time)
 edges = [
     ("Thaltej Gam", "Thaltej", {'distance': 1.2, 'time': 2}),
@@ -33,10 +30,8 @@ edges = [
     ("Vastral", "Nirant Cross Road", {'distance': 7.5, 'time': 2}),
     ("Nirant Cross Road", "Vastral Gam", {'distance': 1.2, 'time': 2}),
 ]
-
 # Add edges to the graph
 metro_graph.add_edges_from(edges)
-
 # Function to calculate the shortest path based on 'time'
 def shortest_time_path(graph, start_station, end_station):
     try:
@@ -44,22 +39,18 @@ def shortest_time_path(graph, start_station, end_station):
     except nx.NetworkXNoPath:
         print(f"No path found between {start_station} and {end_station}.")
         return [] 
-
-
 # Function to get total travel time of the shortest path
 def total_travel_time(graph, path):
     total_time = 0
     for i in range(len(path) - 1):
         total_time += graph[path[i]][path[i + 1]]['time']
     return total_time
-
 # Function to calculate total distance of the shortest path
 def total_distance(graph, path):
     total_distance = 0
     for i in range(len(path) - 1):
         total_distance += graph[path[i]][path[i + 1]]['distance']
     return total_distance
-
 # Real-time updates using a loop
 while True:
     # Step 4: Get user input for start and end stations
@@ -82,11 +73,9 @@ while True:
         total_distance_value = total_distance(metro_graph, shortest_path)
         print(f"Total travel time from {start_station} to {end_station} is: {total_time} minutes")
         print(f"Total distance from {start_station} to {end_station} is: {total_distance_value} km")
-        
         # Step 5: Visualize only the shortest path on the graph
         subgraph = metro_graph.subgraph(shortest_path)  # Extract subgraph for the shortest path
         pos = nx.spring_layout(metro_graph, seed=42)  # Positions for all nodes (fixed seed for consistent layout)
-
         # Clear previous plot
         plt.clf()       
         # Draw all nodes but highlight only those in the shortest path
