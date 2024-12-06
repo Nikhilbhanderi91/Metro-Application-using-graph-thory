@@ -4,10 +4,8 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import tkinter as tk
 from tkinter import ttk, messagebox
 
-
 # Step 1: Create a graph object
 metro_graph = nx.Graph()
-
 
 # Define metro stations for both routes
 red_line_stations = [
@@ -45,6 +43,7 @@ edges = [
     ("Rabari Colony", "Vastral", {'distance': 2.5, 'time': 3}),
     ("Vastral", "Nirant Cross Road", {'distance': 7.5, 'time': 2}),
     ("Nirant Cross Road", "Vastral Gam", {'distance': 1.2, 'time': 2}),
+    
     # Blue Line edges
     ("APMC", "Jivraj Park", {'distance': 1.5, 'time': 3}),
     ("Jivraj Park", "Rajiv Nagar", {'distance': 1.2, 'time': 2}),
@@ -58,8 +57,10 @@ edges = [
     ("Sabarmati Railway Station", "Sabarmati", {'distance': 1.8, 'time': 3}),
     ("Sabarmati", "Motera", {'distance': 1.6, 'time': 3}),
 ]
+
 # Add edges to the graph
 metro_graph.add_edges_from(edges)
+
 # Function to calculate the shortest path based on 'time'
 def shortest_time_path(graph, start_station, end_station):
     try:
@@ -67,18 +68,21 @@ def shortest_time_path(graph, start_station, end_station):
     except nx.NetworkXNoPath:
         messagebox.showinfo("No Path", f"No path found between {start_station} and {end_station}.")
         return []
+        
 # Function to get total travel time of the shortest path
 def total_travel_time(graph, path):
     total_time = 0
     for i in range(len(path) - 1):
         total_time += graph[path[i]][path[i + 1]]['time']
     return total_time
+    
 # Function to calculate total distance of the shortest path
 def total_distance(graph, path):
     total_distance = 0
     for i in range(len(path) - 1):
         total_distance += graph[path[i]][path[i + 1]]['distance']
     return total_distance
+    
 # Function to calculate and visualize the route
 def calculate_route():
     start_station = start_station_var.get()
@@ -97,6 +101,7 @@ def calculate_route():
         visualize_path(shortest_path, total_time, total_distance_value)
     else:
         messagebox.showinfo("No Path", "No path found between the selected stations.")
+        
 # Function to visualize the path using matplotlib
 def visualize_path(path, total_time, total_distance):
     plt.clf()  # Clear previous plot
@@ -111,8 +116,10 @@ def visualize_path(path, total_time, total_distance):
     nx.draw_networkx_edge_labels(subgraph, pos, edge_labels=edge_labels)
     plt.title(f"Shortest Path from {path[0]} to {path[-1]} (Time: {total_time} min, Distance: {total_distance} km)")
     plt.tight_layout() 
+    
     # Adjust layout
-    canvas.draw()     
+    canvas.draw()
+    
 # Render the plot in the Tkinter window
 # Tkinter window setup
 root = tk.Tk()
@@ -126,12 +133,10 @@ input_frame.pack(pady=20)
 start_station_var = tk.StringVar()
 end_station_var = tk.StringVar()
 
-
 # Start station dropdown
 ttk.Label(input_frame, text="Select Start Station:").grid(row=0, column=0, padx=10, pady=10)
 start_station_menu = ttk.Combobox(input_frame, textvariable=start_station_var, values=red_line_stations + blue_line_stations)
 start_station_menu.grid(row=0, column=1, padx=10, pady=10)
-
 
 # End station dropdown
 ttk.Label(input_frame, text="Select End Station:").grid(row=1, column=0, padx=10, pady=10)
