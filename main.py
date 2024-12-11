@@ -1,10 +1,8 @@
 iimport networkx as nx
 import matplotlib.pyplot as plt
 
-
 # Step 1: Create a graph object
 metro_graph = nx.Graph() 
-
 
 # Step 2: Add metro stations as nodes
 stations = [
@@ -14,7 +12,6 @@ stations = [
     "Rabari Colony", "Vastral", "Nirant Cross Road", "Vastral Gam"
 ]
 metro_graph.add_nodes_from(stations)
-
 
 # Step 3: Define edges (station-to-station connections with distance and time)
 edges = [
