@@ -74,6 +74,7 @@ while True:
     if start_station not in metro_graph or end_station not in metro_graph:
         print("Error: One or both of the stations are not in the network. Please try again.")
         continue
+        
     # Calculate the shortest path
     shortest_path = shortest_time_path(metro_graph, start_station, end_station)
     if shortest_path:
@@ -109,4 +110,5 @@ while True:
 
 # Close the plot when exiting the loop
 plt.close()
+
 #user can get your destination place 
