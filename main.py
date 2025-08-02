@@ -14,6 +14,7 @@ stations = [
 metro_graph.add_nodes_from(stations)
 
 
+
 # Step 3: Define edges (station-to-station connections with distance and time)
 edges = [
     ("Thaltej Gam", "Thaltej", {'distance': 1.2, 'time': 2}),
@@ -35,8 +36,10 @@ edges = [
     ("Nirant Cross Road", "Vastral Gam", {'distance': 1.2, 'time': 2}),
 ]
 
+
 # Add edges to the graph
 metro_graph.add_edges_from(edges)
+
 
 # Function to calculate the shortest path based on 'time'
 def shortest_time_path(graph, start_station, end_station):
@@ -52,6 +55,7 @@ def total_travel_time(graph, path):
     for i in range(len(path) - 1):
         total_time += graph[path[i]][path[i + 1]]['time']
     return total_time
+    
     
 # Function to calculate total distance of the shortest path
 def total_distance(graph, path):
