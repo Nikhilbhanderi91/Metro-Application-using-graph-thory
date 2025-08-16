@@ -11,6 +11,7 @@ red_line_stations = [
     "Gheekanta", "Kalupur Railway Station", "Kankaria East", "Apparel Park", "Amraiwadi",  
     "Rabari Colony", "Vastral", "Nirant Cross Road", "Vastral Gam"
 ]
+
 blue_line_stations = [
     "APMC", "Jivraj Park", "Rajiv Nagar", "Shreyas", "Paldi", 
     "Gandhi Gram", "Old High Court (interchange station)", "Usmanpura", 
