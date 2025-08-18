@@ -11,6 +11,8 @@ stations = [
     "Gheekanta", "Kalupur Railway Station", "Kankaria East", "Apparel Park", "Amraiwadi",  
     "Rabari Colony", "Vastral", "Nirant Cross Road", "Vastral Gam"
 ]
+
+
 metro_graph.add_nodes_from(stations)
 
 
