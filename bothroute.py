@@ -15,19 +15,14 @@ red_line_stations = [
     "Rabari Colony", "Vastral", "Nirant Cross Road", "Vastral Gam"
 ]
 
-
 blue_line_stations = [
     "APMC", "Jivraj Park", "Rajiv Nagar", "Shreyas", "Paldi",
     "Gandhi Gram", "Old High Court (interchange station)", "Usmanpura",
     "Vadaj", "Sabarmati Railway Station", "Sabarmati", "Motera"
 ]
 
-
-
 # Add both routes to the graph
 metro_graph.add_nodes_from(red_line_stations + blue_line_stations)
-
-
 
 # Step 3: Define edges (station-to-station connections with distance and time)
 edges = [
