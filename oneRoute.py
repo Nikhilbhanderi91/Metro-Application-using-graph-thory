@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 # Step 1: Create a graph object
 metro_graph = nx.Graph() 
 
+
 # Step 2: Add metro stations as nodes for both routes
 red_line_stations = [
     "Thaltej Gam", "Thaltej", "Doordarshan Kendra", "Gurukul Road", "Gujarat University", 
