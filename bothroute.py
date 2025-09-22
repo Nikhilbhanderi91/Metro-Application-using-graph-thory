@@ -105,8 +105,10 @@ def calculate_route():
         
 # Function to visualize the path using matplotlib
 def visualize_path(path, total_time, total_distance):
+    
     plt.clf()  # Clear previous plot
     pos = nx.spring_layout(metro_graph, seed=42)  # Fixed positions for consistency
+    
     # Draw all nodes
     nx.draw(metro_graph, pos, with_labels=True, node_color='lightgrey', node_size=2000, font_size=10)    
     # Highlight the shortest path
