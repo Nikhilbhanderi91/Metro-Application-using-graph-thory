@@ -14,7 +14,6 @@ stations = [
 
 metro_graph.add_nodes_from(stations)
 
-
 # Step 3: Define edges (station-to-station connections with distance and time)
 edges = [
     ("Thaltej Gam", "Thaltej", {'distance': 1.2, 'time': 2}),
