@@ -12,7 +12,6 @@ stations = [
     "Rabari Colony", "Vastral", "Nirant Cross Road", "Vastral Gam"
 ]
 
-
 metro_graph.add_nodes_from(stations)
 
 # Step 3: Define edges (station-to-station connections with distance and time)
